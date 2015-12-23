@@ -12,22 +12,6 @@ GraphInter* GraphInter::get()
 	return inter;
 }
 
-void GraphInter::load()
-{
-	if (inter == nullptr)
-	{
-		inter = new GraphInter;
-	}
-}
-
-void GraphInter::close()
-{
-	if (inter != nullptr)
-	{
-		delete inter;
-	}
-}
-
 void GraphInter::display(std::string word)
 {
 	std::cout << word << std::endl;
@@ -50,45 +34,144 @@ void GraphInter::enter(int &numero)
 	std::cin >> numero;
 }
 
-int GraphInter::digitoEntre(int a, int b)
+std::string GraphInter::minus(std::string word)
 {
-	int digito = -1;
+	for (int i = 0; i < word.size(); i++)
+	{
+		if (word[i] >= 65 && word[i] <= 90)
+		{
+			word[i] += 32;
+		}
+	}
+	return word;
+}
+
+int GraphInter::traducir()
+{
+	std::string comida;
 
 	do
 	{
-		enter(digito);
+		display("Que comida acabas de terminar?");
+		enter(comida);
 
-		if (std::cin.fail())
+		if (minus(comida) == "desayuno")
 		{
-			std::cout << "Error, introduce un digito" << std::endl;
-			std::cin.clear();
+			return 0;
 		}
-
-		else if (digito < a || digito > b)
+		else if (minus(comida) == "comida")
 		{
-			std::cout << "Error, introduce un digito entre " << a << " y " << b << std::endl;
-			digito = -1;
+			return 1;
 		}
+		else if (minus(comida) == "merienda")
+		{
+			return 2;
+		}
+		else if (minus(comida) == "cena")
+		{
+			return 3;
+		}
+		else
+		{
+			display("Eso no es ninguna comida");
 
-	} while (digito == -1);
-
-	return digito;
+			comida = "none";
+		}
+	} while (comida == "none");
 }
 
-/*void GraphInter::mostrar(Persona* persona)
+bool GraphInter::traducir2()
 {
-	display(persona->nombre);
+	std::string medida;
 
-	for (int j = 0; j < persona->comida.length(); j++)
+	display("Medida en gramos, o en mililitros?");
+	enter(medida);
+
+	do
 	{
-		mostrar(persona->comida.operator[](j));
+		if (minus(medida) == "gramos") return true;
+
+		else if (minus(medida) == "mililitros") return false;
+
+		else
+		{
+			display("Eso no es una medida valida");
+
+			medida = "none";
+		}
+	} while (medida == "none");
+}
+
+std::string GraphInter::traducir(int comida)
+{
+	switch (comida)
+	{
+	case 0:
+		return "Desayuno: ";
+		break;
+	case 1:
+		return "Comida: ";
+		break;
+	case 2:
+		return "Merienda: ";
+		break;
+	case 3:
+		return "Cena: ";
+		break;
 	}
+}
+
+std::string GraphInter::traducir2(bool solid)
+{
+	if (!solid) return "ml";
+
+	if (solid) return "g";
+}
+
+void GraphInter::mostrar(Persona* persona)
+{
+	display(persona->nombre + ":");
+
+	for (int i = 0; i < COMIDAS; i++)
+	{
+		if (!persona->comidas[i].empty())
+		{
+			display(tab_word(traducir(i)));
+
+			for (int j = 0; j < persona->comidas[i].length(); j++)
+			{
+				mostrar(persona->comidas[i].operator[](j));
+			}
+		}
+	}
+	display("");
+	display(tab_word("Kcal consumidas: " + std::to_string(persona->calorias)));
+	display(tab_word("Meta diaria de Kcal: " + std::to_string(persona->meta)));
+
+	if (persona->meta < persona->calorias)
+	{
+		display(tab_word("Meta diaria sobrepasada"));
+	}
+	else if (persona->meta > persona->calorias)
+	{
+		display(tab_word("Kcal restantes hasta la meta: " + std::to_string(persona->meta - persona->calorias)));
+	}
+	else
+	{
+		display(tab_word("Meta diaria lograda"));
+	}
+	display("");
 }
 
 void GraphInter::mostrar(Comida* comida)
 {
-	display(comida->nombre + ": " + std::to_string(comida->cantidad) + " g -> " + std::to_string(comida->calorias_peso));
-}*/
+	display(tab_word(tab_word(comida->nombre + ": " + std::to_string(comida->cantidad) + " " + traducir2(comida->solid))));
+}
+
+void GraphInter::mostrar(Alimento* alimento)
+{
+	display(tab_word(alimento->nombre + ": " + std::to_string(alimento->calorias) + " Kcal por cada " + std::to_string(alimento->cantidad) + " " + traducir2(alimento->solid)));
+}
 
 void GraphInter::pausa()
 {
@@ -166,15 +249,41 @@ int GraphInter::mainMenu()
 	return menu(opciones, 3);
 }
 
-int GraphInter::secondaryMenu()
+int GraphInter::userMenu()
 {
-	std::string opciones[4];
+	std::string opciones[6];
+
+	opciones[0] = "Agregar";
+	opciones[1] = "Editar";
+	opciones[2] = "Resetear";
+	opciones[3] = "Eliminar";
+	opciones[4] = "Mostrar";
+	opciones[5] = "Volver";
+
+	return menu(opciones, 6);
+}
+
+int GraphInter::foodMenu()
+{
+	std::string opciones[5];
 
 	opciones[0] = "Agregar";
 	opciones[1] = "Editar";
 	opciones[2] = "Eliminar";
-	opciones[3] = "Salir";
+	opciones[3] = "Mostrar";
+	opciones[4] = "Volver";
 
-	return menu(opciones, 4);
+	return menu(opciones, 5);
+}
+
+int GraphInter::multMenu()
+{
+	std::string opciones[3];
+
+	opciones[0] = "Uno";
+	opciones[1] = "Todos";
+	opciones[2] = "Volver";
+
+	return menu(opciones, 3);
 }
 

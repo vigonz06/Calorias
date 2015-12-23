@@ -64,13 +64,23 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Comida.h" />
     <ClInclude Include="GlobalConstants.h" />
     <ClInclude Include="GraphInter.h" />
     <ClInclude Include="List.h" />
+    <ClInclude Include="ListaAlimentos.h" />
+    <ClInclude Include="ListaComida.h" />
+    <ClInclude Include="ListaPersonas.h" />
+    <ClInclude Include="Persona.h" />
     <ClInclude Include="utilsWin.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="GraphInter.cpp" />
+    <ClCompile Include="ListaAlimentos.cpp" />
+    <ClCompile Include="ListaComida.cpp" />
+    <ClCompile Include="ListaPersonas.cpp" />
+    <ClCompile Include="Main.cpp" />
+    <ClCompile Include="Persona.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

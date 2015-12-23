@@ -2,29 +2,37 @@
 #define GRAPHINTER
 
 #include <string>
+#include "Persona.h"
+#include "Comida.h"
 
 class GraphInter
 {
 public:
 
 	static GraphInter* get();
-	static void load();
-	static void close();
 
 	void display(std::string word);
 	void display(int numero);
 	void enter(std::string &word);
 	void enter(int &numero);
 
-	/*void mostrar(Persona* persona);
-	void mostrar(Comida* comida);*/
+	std::string minus(std::string word);
+	int traducir();
+	bool traducir2();
+	std::string traducir(int comida);
+	std::string traducir2(bool solid);
+
+	void mostrar(Persona* persona);
+	void mostrar(Comida* comida);
+	void mostrar(Alimento* alimento);
 
 	void pausa();
-	int digitoEntre(int a, int b);
 	void clearConsole(){ system("cls"); }
 
 	int mainMenu();
-	int secondaryMenu();
+	int userMenu();
+	int foodMenu();
+	int multMenu();
 
 private:
 

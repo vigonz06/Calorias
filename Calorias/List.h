@@ -28,6 +28,7 @@ public:
 	~List() { release(); }
 
 	inline bool full() const  { return (counter == dim); }
+	inline bool empty() const { return counter == 0; }
 	inline int length() const { return this->counter; }
 
 	T* operator [](int i) { assert(0 <= i && i < counter);  return list[i]; }

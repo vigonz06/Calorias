@@ -1,13 +1,29 @@
-﻿Compilación iniciada a las 30/09/2015 9:37:20.
+﻿Compilación iniciada a las 14/10/2015 16:32:55.
      1>Proyecto "I:\victor\Programas\Calorias\Calorias\Calorias.vcxproj" en el nodo 2 (Build destinos).
      1>ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt GraphInter.cpp
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt GraphInter.cpp ListaAlimentos.cpp ListaPersonas.cpp Main.cpp Persona.cpp
          GraphInter.cpp
+     1>i:\victor\programas\calorias\calorias\graphinter.cpp(39): warning C4018: '<' : no coinciden signed/unsigned
+         Generando código...
+     1>i:\victor\programas\calorias\calorias\graphinter.cpp(81): warning C4715: 'GraphInter::traducir' : no todas las rutas de acceso de control devuelven un valor
+     1>i:\victor\programas\calorias\calorias\graphinter.cpp(103): warning C4715: 'GraphInter::traducir2' : no todas las rutas de acceso de control devuelven un valor
+     1>i:\victor\programas\calorias\calorias\graphinter.cpp(122): warning C4715: 'GraphInter::traducir' : no todas las rutas de acceso de control devuelven un valor
+     1>i:\victor\programas\calorias\calorias\graphinter.cpp(129): warning C4715: 'GraphInter::traducir2' : no todas las rutas de acceso de control devuelven un valor
+         Omitiendo... (no se detectaron cambios relevantes)
+         Persona.cpp
+         Main.cpp
+         ListaPersonas.cpp
+         ListaAlimentos.cpp
        Link:
          C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"I:\victor\Programas\Calorias\Debug\Calorias.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"I:\victor\Programas\Calorias\Debug\Calorias.pdb" /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"I:\victor\Programas\Calorias\Debug\Calorias.lib" /MACHINE:X86 Debug\GraphInter.obj
-     1>LINK : fatal error LNK1561: se debe definir el punto de entrada
-     1>Compilación del proyecto terminada "I:\victor\Programas\Calorias\Calorias\Calorias.vcxproj" (Build destinos) -- ERROR.
+         Debug\ListaAlimentos.obj
+         Debug\ListaComida.obj
+         Debug\ListaPersonas.obj
+         Debug\Main.obj
+         Debug\Persona.obj
+         Calorias.vcxproj -> I:\victor\Programas\Calorias\Debug\Calorias.exe
+     1>Compilación del proyecto terminada "I:\victor\Programas\Calorias\Calorias\Calorias.vcxproj" (Build destinos).
 
-ERROR al compilar.
+Compilación correcta.
 
-Tiempo transcurrido 00:00:01.73
+Tiempo transcurrido 00:00:02.32

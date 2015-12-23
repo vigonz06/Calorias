@@ -1,0 +1,5 @@
+helado 200 100 0
+leche 100 100 0
+natillas 200 100 0
+queso 300 100 1
+yogur 100 100 0
